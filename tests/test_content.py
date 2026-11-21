@@ -43,6 +43,8 @@ class ContentTests(unittest.TestCase):
         evidence = (ROOT/'evidence.html').read_text(encoding='utf-8')
         self.assertIn('class="table-scroll" role="region"', evidence)
         self.assertIn('tabindex="0"', evidence)
+        self.assertIn('<title>播客精读｜中文长访谈精读</title>', html)
+        self.assertIn('孙宇晨 × 邵艾伦：<br><em>4 小时访谈里，值得读的 12 个讨论</em>', html)
 
     def test_article_and_evidence_ids_match(self):
         article_ids = {x[0] for x in sections()}
