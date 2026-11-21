@@ -34,6 +34,10 @@ class ContentTests(unittest.TestCase):
             source = (ROOT/'episodes/001-sun-alan'/md_name).read_bytes()
             generated = (ROOT/page_name).read_text(encoding='utf-8')
             self.assertIn('source-sha256:'+hashlib.sha256(source).hexdigest(), generated)
+        self.assertIn('<nav class="chapter-nav" aria-label="章节目录" tabindex="0">', html)
+        evidence = (ROOT/'evidence.html').read_text(encoding='utf-8')
+        self.assertIn('class="table-scroll" role="region"', evidence)
+        self.assertIn('tabindex="0"', evidence)
 
     def test_article_and_evidence_ids_match(self):
         article_ids = {x[0] for x in sections()}

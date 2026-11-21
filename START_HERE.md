@@ -1,4 +1,4 @@
-# 从零上手：上传 GitHub + 用 Copilot Student 继续做
+# 从零上手：阅读项目与可选开发工具
 
 ## 你已经有什么？
 
@@ -9,25 +9,23 @@
 1. 将仓库完整下载并解压到例如 `D:\Projects\podcast-digest-cn`（不要只上传 ZIP 文件）。
 2. 双击解压目录中的 `index.html`，先看文章页面。
 3. 打开 **VS Code** → `File` → `Open Folder...` → 选择 `podcast-digest-cn` 这一层文件夹。
-4. 安装 GitHub 官方的 **GitHub Copilot** 扩展并登录已经激活 Student 的 GitHub 账号。
+4. 可选：安装并登录 GitHub 官方的 **GitHub Copilot** 扩展；Copilot Free 即可用于继续维护，本项目不要求付费计划。
 5. 打开 Copilot Chat，粘贴根目录 `COPILOT_PROMPT.txt` 的全部内容。
 6. 先让它审计，不要让它在第一步擅自重写访谈原文。
 
 > 如果你使用截图中的 **GitHub Copilot 桌面 App**：点 Sessions 旁的 `+`，选择 **Open local folder**，选本项目目录；先用 **Plan**，权限用需要确认的模式。底部若显示 `No models available`，先处理账户权益/登录问题；也可以改用 VS Code Copilot Chat。
 
-## B. 使用 Copilot Student 前的检查
+## B. 可选：使用 Copilot Free
 
-1. 打开 https://github.com/settings/education/benefits ，确认学生权益与 Copilot Student 已激活（学生认证批准后还可能需要单独激活 Copilot）。
-2. 打开 https://github.com/settings/copilot 看账户设置。
-3. 在 VS Code 退出再登录正确 GitHub 账号，并确认 GitHub Copilot 扩展处于启用状态。
-4. Student 的模型是自动选择，不必手工购买模型，也不应随便填写 API Key。使用额度可能有限。
-5. 如果 App 仍显示无模型，而 VS Code Copilot Chat 能正常用，先用 VS Code 做项目即可。
+1. 如需 AI 辅助，在 VS Code 或 Copilot 桌面 App 登录自己的 GitHub 账号，并确认 Copilot Free 可用。
+2. 使用免费计划时，功能和额度以账户当前显示为准；本项目不需要 API Key，也不依赖 Copilot 才能阅读或构建网页。
+3. 如果某个客户端暂时无法使用 Copilot，仍可直接打开 `index.html` 阅读，或按下文运行项目检查。
 
 ## C. 最容易的方法：直接上传到 GitHub（不用命令）
 
 1. GitHub 登录后，右上角 `+` → `New repository`。
 2. Repository name 建议 `podcast-digest-cn`，Description 可写：`Source-grounded Chinese podcast digests. Read less, understand more.`
-3. 选择 **Public**（想暂时审查，可先选 Private 后来再公开）。**不要勾选**初始化 README、.gitignore 或 license，因为包里已经有。
+3. 按分享需要选择 **Public** 或 **Private**。**不要勾选**初始化 README、.gitignore 或 license，因为项目里已经有。
 4. 创建后在仓库页面选 `uploading an existing file` / `Add file → Upload files`。
 5. 把**解压后文件夹里的全部内容**上传（不是把 ZIP 本身上传）。Web 上传可能不方便保留隐藏的 `.github/` 文件夹，推荐使用下面的 Git 方法以确保全量上传。
 6. Commit changes。核查网页能看到 README 和 `episodes/001-sun-alan`。

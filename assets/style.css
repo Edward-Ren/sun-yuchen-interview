@@ -10,3 +10,16 @@
   .appendix table{font-size:12px}
   .appendix th,.appendix td{min-width:92px;white-space:normal}
 }
+
+.prose .table-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;margin:20px 0}
+.prose .table-scroll table{display:table;width:max-content;min-width:100%;max-width:none;overflow:visible}
+.table-scroll:focus-visible{outline:3px solid #729c89;outline-offset:3px}
+
+@media(max-width:850px){
+  .sidebar{display:block;min-width:0}
+  .sidebar .sticky{position:static}
+  .sidebar-title{margin:0 0 8px}
+  .chapter-nav{display:flex;gap:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;border-bottom:1px solid var(--line);scrollbar-color:#9eaa9c transparent}
+  .chapter-nav a{flex:0 0 auto;padding:10px 12px;white-space:nowrap}
+  .sidebar-extra{margin:8px 0 16px}
+}

@@ -32,6 +32,15 @@ class EditorialRenderer(mistune.HTMLRenderer):
 
 md = mistune.create_markdown(renderer=EditorialRenderer(), plugins=['table', 'strikethrough'])
 content = md(SOURCE)
+def add_keyboard_scroll_regions(markup):
+    return re.sub(
+        r'<table>(.*?)</table>',
+        r'<div class="table-scroll" role="region" aria-label="可横向滚动的表格" tabindex="0"><table>\1</table></div>',
+        markup,
+        flags=re.S,
+    )
+
+content = add_keyboard_scroll_regions(content)
 # In the source, links to evidence/review are adjacent to article, so rewrite just these
 # two Markdown link destinations for the site, where index.html resides at repo root.
 for target, out in [('证据索引.md', 'evidence.html'), ('审校说明.md', 'review.html')]:
@@ -89,7 +98,9 @@ html = f'''<!doctype html>
     <aside class="sidebar">
       <div class="sticky">
         <p class="sidebar-title">阅读目录 / CONTENTS</p>
-        {nav}
+        <nav class="chapter-nav" aria-label="章节目录" tabindex="0">
+          {nav}
+        </nav>
         <div class="sidebar-extra"><a href="#sources">来源与审校说明 ↘</a></div>
       </div>
     </aside>
@@ -123,7 +134,7 @@ for infile, outfile, page_title in [
 ]:
     raw = (ROOT/'episodes/001-sun-alan'/infile).read_text(encoding='utf-8')
     source_hash = hashlib.sha256(raw.encode('utf-8')).hexdigest()
-    rendered = secondary_md(raw)
+    rendered = add_keyboard_scroll_regions(secondary_md(raw))
     page = f'''<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{page_title} · 播客精读计划</title><link rel="stylesheet" href="./assets/style.css"></head>
 <body><!-- source-sha256:{source_hash} --><header class="topbar"><div class="topbar-inner"><a class="brand" href="./index.html"><span class="brandmark">·</span> 播客精读计划</a><nav class="topnav"><a href="./index.html">← 返回精读</a><a class="toplink" href="https://www.youtube.com/watch?v=0Z-vhBvBmUY" target="_blank" rel="noopener noreferrer">原视频 ↗</a></nav></div></header>

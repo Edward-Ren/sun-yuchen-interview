@@ -1,71 +1,62 @@
 # 播客精读计划 · Podcast Digest CN
 
-> **听得长，读得清。** 用有依据的中文精读，重新整理值得花时间的长访谈。
+> **听得长，读得清。** 把值得花时间的中文长访谈，整理成可读、有出处、保留边界的精读文章。
 
-[📖 在线阅读（部署 GitHub Pages 后）](#在线阅读) · [📄 本期完整精读](./episodes/001-sun-alan/精华精读.md) · [🧭 证据索引](./episodes/001-sun-alan/证据索引.md) · [🔎 审校记录](./episodes/001-sun-alan/审校说明.md)
+这不是自动生成的 AI 摘要，也不是人物观点的背书。每期以中文编辑稿呈现，保留说话人、讨论语境、原视频入口与尚未核实的事项。
 
-## Episode 001 · 孙宇晨 × 邵艾伦
+## 第一期：孙宇晨 × 邵艾伦
 
-**4 小时 22 分的对话，真正值得思考的 12 个讨论。**
+**4 小时 22 分的对话，整理为 12 个讨论。** 从 AI、学习与机会、重大决策，谈到财富、自由、创造与体验。
 
-话题包括 AI、学习与机会、重大决策、财富与自由、创造与体验。不是拼凑“成功学金句”，而是保留**谁说的、在回答什么、举了什么例子，以及有什么边界**。
+- [阅读完整精读](./episodes/001-sun-alan/精华精读.md)
+- [查看 12 个主题的时间戳与转录章节](./episodes/001-sun-alan/证据索引.md)
+- [查看审校范围、状态与限制](./episodes/001-sun-alan/审校说明.md)
+- [观看原始访谈（YouTube）](https://www.youtube.com/watch?v=0Z-vhBvBmUY)
 
-- 🎥 [原始访谈（YouTube）](https://www.youtube.com/watch?v=0Z-vhBvBmUY)
-- 📖 [阅读完整文章](./episodes/001-sun-alan/精华精读.md)
-- 🕒 [每一节的来源和时间戳](./episodes/001-sun-alan/证据索引.md)
-- 📝 [哪些地方还没有音频听校？](./episodes/001-sun-alan/审校说明.md)
+### 可以先从这三段开始
 
-### 三段可以先回看
-
-| 感兴趣的话题 | 回看片段 |
+| 讨论 | 回看原片 |
 | --- | --- |
 | 决策前先扩大选择范围 | [00:40:06](https://www.youtube.com/watch?v=0Z-vhBvBmUY&t=2406s) |
 | 财富与自由是什么关系 | [02:43:27](https://www.youtube.com/watch?v=0Z-vhBvBmUY&t=9807s) |
 | 创造与消费如何平衡 | [04:12:27](https://www.youtube.com/watch?v=0Z-vhBvBmUY&t=15147s) |
 
-## 这份内容如何保证可信？
+## 内容依据与审校状态
 
-1. 所有重要观点均应有对应的原视频时间戳及转录章节。
-2. **编辑标题不是嘉宾原话**；不以引号冒充没有听校的逐字引述。
-3. 把「嘉宾的个人主张」和「已查证的外部事实」分开。
-4. **目前是公开转录对照的发布候选稿，尚未逐段听原音核对**。欢迎就具体时间码纠错。
+精读基于公开分章节转录对照整理，重要主题附有原视频时间入口和对应转录章节。**目前尚未逐段听校原音，也未完成医疗、技术、投资等外部事实核验。** 转录对照不等于音频核验；编辑标题和概括不是嘉宾逐字原话。
 
-转录参考：[LeoLee0812 分章节转录](https://github.com/LeoLee0812/sunyuchen-alan-interview)；[AayuBal 辅助整理](https://github.com/AayuBal/shaoailun-sunyuchen-podcast)。原视频与转录的权益属于各自权利人；仓库未收录其完整音频或逐字稿。
+转录参考：[LeoLee0812 分章节转录](https://github.com/LeoLee0812/sunyuchen-alan-interview) · [AayuBal 辅助整理](https://github.com/AayuBal/shaoailun-sunyuchen-podcast)。原视频与转录的权益属于各自权利人；本仓库不收录完整音频或第三方逐字稿。
 
-## 在线阅读
+## 阅读网页
 
-本仓库根目录已经包含 `index.html` 和 `assets/style.css`，可直接双击 `index.html` 预览，无须安装网页框架。
+仓库提供静态阅读页：下载仓库后，本地打开根目录的 `index.html` 即可预览，无须安装前端框架。证据索引和审校说明也有对应的网页版本。
 
-GitHub Pages 发布方法：**Settings → Pages → Build and deployment → Deploy from a branch → main / (root) → Save**。部署后链接一般是 `https://你的用户名.github.io/podcast-digest-cn/`（以 GitHub 实际显示为准）。
+**目前没有已部署的公开阅读站点。** GitHub Pages 尚未配置；不要把本仓库文件页误认为独立的 Pages 网站。仓库可见性及后续托管方式以 GitHub 当前设置为准。
 
-## 从零开始开发
+## 给读者与贡献者
 
-- [打开 START_HERE.md](./START_HERE.md)：解压、VS Code、Copilot Student、上传 GitHub 的步骤。
-- [COPILOT_PROMPT.txt](./COPILOT_PROMPT.txt)：可直接粘贴给 Copilot 的第一条任务。
-- [`prompts/`](./prompts/)：内容审核、网站优化、质量检查、后续扩展的分阶段 Prompt。
-- [AGENTS.md](./AGENTS.md)：任何代码 Agent 都应遵守的内容真实性红线。
+- [纠错与贡献指南](./CONTRIBUTING.md)：请提供具体原视频时间码及问题类型。
+- [版权说明](./CONTENT-LICENSE.md)：仓库原创编辑文字的许可范围。
+- [代码许可](./LICENSE)：MIT。
 
-### 本地运行和检查
+独立整理项目，不代表视频发布方、嘉宾或转录仓库作者；文章不构成投资、法律或医疗建议。
+
+## 开发与检查
+
+项目使用 Python 生成静态 HTML，样式为原生 CSS；普通阅读不需要安装依赖。当前使用 Copilot Free 也可浏览和维护本项目，Copilot 不是阅读或运行网站的必要条件。
+
+- [新手运行指南](./START_HERE.md)
 
 ```bash
-# 只浏览网页，无需 Python 依赖，直接打开 index.html 即可
+# 运行测试
 python -m unittest discover -s tests -v
 
-# 改了精华精读.md，需重建静态页面：
+# 检查主题、时间戳和本地链接
+python scripts/check_content.py
+
+# 修改 Markdown 源文件后，重新生成静态页面
 python -m pip install -r requirements.txt
 python scripts/build_site.py
 ```
 
-## 路线
-
-**现在：** 做好这一篇、核对证据、完善阅读体验。  
-**之后：** 做第二篇、第三篇，确定稳定的编辑风格。  
-**最后：** 才考虑转录自动化、批量整理、主题索引与多 Agent。
-
-## 版权与贡献
-
-- 代码：MIT，见 [LICENSE](./LICENSE)。
-- 本仓库原创编辑文字：见 [CONTENT-LICENSE.md](./CONTENT-LICENSE.md)。原访谈视频、人物言论和第三方逐字稿不在本仓库许可范围内。
-- [贡献指南](./CONTRIBUTING.md)：请提交带原视频时间戳的纠错，不要只提交“AI 说应该是这样”。
-
-> 独立整理项目，不代表视频发布方、嘉宾或转录仓库作者；本文不构成投资、法律、医疗建议。
+内容来源文件位于 [`episodes/001-sun-alan/`](./episodes/001-sun-alan/)。请先阅读 [AGENTS.md](./AGENTS.md) 的真实性与审校要求；不要把自动检查结果表述为原音听校或事实核验。
