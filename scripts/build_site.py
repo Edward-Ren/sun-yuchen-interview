@@ -10,7 +10,7 @@ import mistune
 ROOT = Path(__file__).resolve().parents[1]
 ARTICLE = ROOT/'episodes/001-sun-alan/精华精读.md'
 SOURCE = ARTICLE.read_text(encoding='utf-8')
-SOURCE_HASH = hashlib.sha256(ARTICLE.read_bytes()).hexdigest()
+SOURCE_HASH = hashlib.sha256(SOURCE.encode('utf-8')).hexdigest()
 
 class EditorialRenderer(mistune.HTMLRenderer):
     def __init__(self):
@@ -139,7 +139,7 @@ for infile, outfile, page_title in [
 ]:
     source_path = ROOT/'episodes/001-sun-alan'/infile
     raw = source_path.read_text(encoding='utf-8')
-    source_hash = hashlib.sha256(source_path.read_bytes()).hexdigest()
+    source_hash = hashlib.sha256(raw.encode('utf-8')).hexdigest()
     rendered = add_keyboard_scroll_regions(secondary_md(raw))
     page = f'''<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{page_title} · 播客精读计划</title><link rel="stylesheet" href="./assets/style.css"></head>

@@ -30,15 +30,15 @@ class ContentTests(unittest.TestCase):
             self.assertTrue((ROOT/page).is_file())
         html = (ROOT/'index.html').read_text(encoding='utf-8')
         import hashlib
-        content = (ROOT/'episodes/001-sun-alan/精华精读.md').read_bytes()
-        self.assertIn('source-sha256:'+hashlib.sha256(content).hexdigest(), html)
+        content = (ROOT/'episodes/001-sun-alan/精华精读.md').read_text(encoding='utf-8')
+        self.assertIn('source-sha256:'+hashlib.sha256(content.encode('utf-8')).hexdigest(), html)
         for md_name, page_name in (
             ('证据索引.md', 'evidence.html'),
             ('审校说明.md', 'review.html'),
         ):
-            source = (ROOT/'episodes/001-sun-alan'/md_name).read_bytes()
+            source = (ROOT/'episodes/001-sun-alan'/md_name).read_text(encoding='utf-8')
             generated = (ROOT/page_name).read_text(encoding='utf-8')
-            self.assertIn('source-sha256:'+hashlib.sha256(source).hexdigest(), generated)
+            self.assertIn('source-sha256:'+hashlib.sha256(source.encode('utf-8')).hexdigest(), generated)
         self.assertIn('<nav class="chapter-nav" aria-label="章节目录" tabindex="0">', html)
         evidence = (ROOT/'evidence.html').read_text(encoding='utf-8')
         self.assertIn('class="table-scroll" role="region"', evidence)

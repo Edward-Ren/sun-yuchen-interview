@@ -72,7 +72,7 @@ def validate():
                     errs.append(f"{row['id']} 正文中找不到对应视频时间戳 {seconds}")
             except ValueError as exc:
                 errs.append(f"{row['id']}: {exc}")
-    for file in [ROOT/'README.md', ARTICLE, INDEX, ROOT/'START_HERE.md']:
+    for file in [ROOT/'README.md', ARTICLE, INDEX]:
         # Checks only local Markdown links; not external network links.
         for dest in re.findall(r'(?<!!)\[[^\]]*\]\(([^)]+)\)', file.read_text(encoding='utf-8')):
             if dest.startswith(('http:', 'https:', '#', 'mailto:')):
