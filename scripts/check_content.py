@@ -19,10 +19,16 @@ def sections():
 def evidence_rows():
     result = []
     for line in INDEX.read_text(encoding='utf-8').splitlines():
-        match = re.match(r'^\|\s*(\d{2})\s*\|\s*([^|]+)\|\s*\[([^\]]+)\]\((https?://[^)]+)\)\s*\|', line)
+        match = re.match(r'^\|\s*(\d{2})\s*\|\s*([^|]+)\|\s*([^|]+)\|', line)
         if match:
+            times = [
+                {'time': label, 'url': url}
+                for label, url in re.findall(r'\[([^\]]+)\]\((https?://[^)]+)\)', match.group(3))
+            ]
+            if not times:
+                continue
             result.append({'id': match.group(1), 'subject': match.group(2).strip(),
-                           'time': match.group(3), 'url': match.group(4)})
+                           'times': times})
     return result
 
 
@@ -54,17 +60,18 @@ def validate():
     if missing_evidence_ids:
         errs.append('正文存在但证据索引缺少主题：' + ', '.join(missing_evidence_ids))
     for row in rows:
-        try:
-            seconds = time_to_seconds(row['time'])
-            if seconds >= MAX_SECONDS:
-                errs.append(f"{row['id']} 时间超出约 4h22m：{row['time']}")
-            parsed = urlparse(row['url']); q = parse_qs(parsed.query)
-            if parsed.netloc not in {'www.youtube.com','youtube.com'} or q.get('v') != [VIDEO_ID] or q.get('t') != [f'{seconds}s']:
-                errs.append(f"{row['id']} 视频链接与时间戳不一致")
-            if f't={seconds}s' not in article:
-                errs.append(f"{row['id']} 正文中找不到对应视频时间戳 {seconds}")
-        except ValueError as exc:
-            errs.append(f"{row['id']}: {exc}")
+        for entry in row['times']:
+            try:
+                seconds = time_to_seconds(entry['time'])
+                if seconds >= MAX_SECONDS:
+                    errs.append(f"{row['id']} 时间超出约 4h22m：{entry['time']}")
+                parsed = urlparse(entry['url']); q = parse_qs(parsed.query)
+                if parsed.netloc not in {'www.youtube.com','youtube.com'} or q.get('v') != [VIDEO_ID] or q.get('t') != [f'{seconds}s']:
+                    errs.append(f"{row['id']} 视频链接与时间戳不一致：{entry['time']}")
+                if f't={seconds}s' not in article:
+                    errs.append(f"{row['id']} 正文中找不到对应视频时间戳 {seconds}")
+            except ValueError as exc:
+                errs.append(f"{row['id']}: {exc}")
     for file in [ROOT/'README.md', ARTICLE, INDEX, ROOT/'START_HERE.md']:
         # Checks only local Markdown links; not external network links.
         for dest in re.findall(r'(?<!!)\[[^\]]*\]\(([^)]+)\)', file.read_text(encoding='utf-8')):

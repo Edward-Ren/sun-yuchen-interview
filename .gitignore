@@ -7,3 +7,11 @@ venv/
 Thumbs.db
 .pytest_cache/
 .idea/
+
+# Local editorial and development instructions
+AGENTS.md
+COPILOT_PROMPT.txt
+START_HERE.md
+prompts/
+reviews/
+.github/copilot-instructions.md

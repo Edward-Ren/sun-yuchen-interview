@@ -14,6 +14,11 @@ class ContentTests(unittest.TestCase):
         self.assertEqual(len(sections()), 12)
         self.assertEqual(len(evidence_rows()), 12)
 
+    def test_multiple_evidence_timestamps(self):
+        row = next(item for item in evidence_rows() if item['id'] == '11')
+        self.assertEqual([item['time'] for item in row['times']],
+                         ['03:49:45', '03:50:25', '03:52:24'])
+
     def test_timestamps(self):
         self.assertEqual(time_to_seconds('04:12:27'), 15147)
         for bad in ['04:77:01', '00:02:99', '2:3:1']:

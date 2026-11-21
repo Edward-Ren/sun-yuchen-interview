@@ -10,7 +10,7 @@ import mistune
 ROOT = Path(__file__).resolve().parents[1]
 ARTICLE = ROOT/'episodes/001-sun-alan/精华精读.md'
 SOURCE = ARTICLE.read_text(encoding='utf-8')
-SOURCE_HASH = hashlib.sha256(SOURCE.encode('utf-8')).hexdigest()
+SOURCE_HASH = hashlib.sha256(ARTICLE.read_bytes()).hexdigest()
 
 class EditorialRenderer(mistune.HTMLRenderer):
     def __init__(self):
@@ -81,7 +81,7 @@ html = f'''<!doctype html>
     <div class="hero-text">
       <p class="eyebrow">THE LONG CONVERSATION · NO. 001</p>
       <h1>四小时的对话，<br><em>只留下值得思考的部分。</em></h1>
-      <p class="intro">孙宇晨 × 邵艾伦，一场关于 AI、信息、财富与自由的长谈。我们把零散讨论整理成 12 个话题，保留重要例子、限定条件和原片入口。</p>
+      <p class="intro">孙宇晨 × 邵艾伦，一场关于 AI、信息、财富与自由的长谈。本期整理为 12 个讨论，保留重要例子、限定条件和原片入口。</p>
       <div class="meta"><span>4 小时 22 分</span><span>12 个讨论</span><span>5 条阅读主线</span></div>
       <div class="hero-actions"><a class="primary" href="#reading">开始精读 <span aria-hidden="true">↓</span></a><a class="secondary" href="https://www.youtube.com/watch?v=0Z-vhBvBmUY" target="_blank" rel="noopener noreferrer">观看原片 ↗</a></div>
     </div>
@@ -132,8 +132,9 @@ for infile, outfile, page_title in [
     ('证据索引.md', 'evidence.html', '证据索引'),
     ('审校说明.md', 'review.html', '审校说明')
 ]:
-    raw = (ROOT/'episodes/001-sun-alan'/infile).read_text(encoding='utf-8')
-    source_hash = hashlib.sha256(raw.encode('utf-8')).hexdigest()
+    source_path = ROOT/'episodes/001-sun-alan'/infile
+    raw = source_path.read_text(encoding='utf-8')
+    source_hash = hashlib.sha256(source_path.read_bytes()).hexdigest()
     rendered = add_keyboard_scroll_regions(secondary_md(raw))
     page = f'''<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{page_title} · 播客精读计划</title><link rel="stylesheet" href="./assets/style.css"></head>

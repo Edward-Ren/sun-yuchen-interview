@@ -40,23 +40,3 @@
 - [代码许可](./LICENSE)：MIT。
 
 独立整理项目，不代表视频发布方、嘉宾或转录仓库作者；文章不构成投资、法律或医疗建议。
-
-## 开发与检查
-
-项目使用 Python 生成静态 HTML，样式为原生 CSS；普通阅读不需要安装依赖。当前使用 Copilot Free 也可浏览和维护本项目，Copilot 不是阅读或运行网站的必要条件。
-
-- [新手运行指南](./START_HERE.md)
-
-```bash
-# 运行测试
-python -m unittest discover -s tests -v
-
-# 检查主题、时间戳和本地链接
-python scripts/check_content.py
-
-# 修改 Markdown 源文件后，重新生成静态页面
-python -m pip install -r requirements.txt
-python scripts/build_site.py
-```
-
-内容来源文件位于 [`episodes/001-sun-alan/`](./episodes/001-sun-alan/)。请先阅读 [AGENTS.md](./AGENTS.md) 的真实性与审校要求；不要把自动检查结果表述为原音听校或事实核验。
